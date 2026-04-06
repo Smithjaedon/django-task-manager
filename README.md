@@ -23,10 +23,3 @@ A full-stack task management web application built with Django. This project was
 ### Prerequisites
 - Python 3.x
 - pip
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
