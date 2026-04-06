@@ -1,0 +1,37 @@
+{% extends 'layout.html' %} {% block content %}
+<section class="mx-auto w-full max-w-2xl space-y-6">
+  <div>
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-rose-700">Danger Zone</p>
+    <h1 class="mt-1 text-3xl font-bold tracking-tight text-slate-900">Delete Task</h1>
+  </div>
+
+  <form
+    method="post"
+    class="space-y-6 rounded-2xl border border-rose-200 bg-white p-6 shadow-sm sm:p-8"
+  >
+    {% csrf_token %}
+
+    <div class="rounded-xl border border-rose-200 bg-rose-50 p-4">
+      <h2 class="text-lg font-semibold text-rose-900">Are you sure?</h2>
+      <p class="mt-2 text-sm text-rose-800">
+        This will permanently delete <span class="font-semibold">{{ task.title }}</span>.
+      </p>
+    </div>
+
+    <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+      <a
+        href="{% url 'tasks:view_tasks' %}"
+        class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-sky-300 hover:text-sky-700"
+      >
+        Cancel
+      </a>
+      <button
+        type="submit"
+        class="inline-flex items-center justify-center rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-500"
+      >
+        Delete Task
+      </button>
+    </div>
+  </form>
+</section>
+{% endblock content %}

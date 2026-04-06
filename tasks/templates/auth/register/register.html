@@ -1,0 +1,54 @@
+{% extends 'layout.html' %} {% block content %}
+<section class="mx-auto w-full max-w-md space-y-6">
+  <div class="text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Create Account</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">Sign Up</h1>
+    <p class="mt-2 text-sm text-slate-600">
+      Set up your account to start managing tasks efficiently.
+    </p>
+  </div>
+
+  <form
+    method="post"
+    class="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+  >
+    {% csrf_token %}
+
+    <div
+      class="space-y-4 [&_input]:mt-1 [&_input]:w-full [&_input]:rounded-lg [&_input]:border [&_input]:border-slate-300 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:outline-none [&_input]:transition [&_input]:focus:border-sky-500 [&_input]:focus:ring-2 [&_input]:focus:ring-sky-200 [&_label]:block [&_label]:text-sm [&_label]:font-medium [&_label]:text-slate-700 [&_.errorlist]:mb-2 [&_.errorlist]:list-none [&_.errorlist]:rounded-md [&_.errorlist]:border [&_.errorlist]:border-rose-200 [&_.errorlist]:bg-rose-50 [&_.errorlist]:px-3 [&_.errorlist]:py-2 [&_.errorlist]:text-sm [&_.errorlist]:text-rose-700 [&_.helptext]:mt-1 [&_.helptext]:block [&_.helptext]:text-xs [&_.helptext]:text-slate-500"
+    >
+      <div>
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }} {{ form.username.errors }}
+      </div>
+
+      <div>
+        <label for="{{ form.password1.id_for_label }}">Password</label>
+        {{ form.password1 }} {{ form.password1.errors }}
+      </div>
+
+      <div>
+        <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+        {{ form.password2 }} {{ form.password2.errors }}
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="inline-flex w-full items-center justify-center rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500"
+    >
+      Create Account
+    </button>
+
+    <p class="text-center text-sm text-slate-600">
+      Already have an account?
+      <a
+        href="{% url 'tasks:login' %}"
+        class="font-semibold text-sky-700 transition hover:text-sky-600 hover:underline"
+      >
+        Sign in
+      </a>
+    </p>
+  </form>
+</section>
+{% endblock content %}
